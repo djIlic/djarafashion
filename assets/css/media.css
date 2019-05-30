@@ -1,6 +1,6 @@
 @media only screen and (min-width: 1360px) {
     main, .form {
-        height: 480px;
+        min-height: 480px;
     }
 }
 @media only screen and (max-width: 991px) {

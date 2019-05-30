@@ -1,5 +1,5 @@
 <?php
-    
+  
 include "views/fixed/head.php";
 include "views/fixed/header.php";
 include "views/fixed/nav.php";
@@ -20,8 +20,11 @@ if(isset($_GET['page'])){
         case 'kontakt':
         include "views/pages/kontakt.php";
         break;
+        case 'proizvod':
+        include "views/pages/proizvod.php";
+        break;
         default:
-        include "views/pages/pocetna.php"; /* 404 stranica */
+        include "views/pages/404.php";
         break;
     }
 }

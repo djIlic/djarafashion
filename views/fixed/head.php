@@ -1,6 +1,6 @@
 <?php
     require_once "config/connection.php";
-    require_once "models/functions.php";
+    require_once "models/clothes/functions.php";
 ?>
 <!DOCTYPE html>
 <html>

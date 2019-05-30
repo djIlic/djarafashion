@@ -22,15 +22,6 @@
                         <a class="nav-link" href="<?=$item->putanja?>" title="<?=$item->naziv?>"><?=$item->naziv?></a>
                     </li>
                         <?php endforeach; ?>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#">Пријави се</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Региструј се</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?page=autor">O аутору</a>
-                    </li>    -->
                     <li class="nav-item">
                         <a class="nav-link" href="#">Документација</a>
                     </li>
