@@ -1,14 +1,10 @@
 $("#btnReg").click(function(){
-function getFormData(){
-    var obj={
-    ime=$("#tbIme").val(),
-    prezime=$("#tbPrezime").val(),
-    username=$("#username").val(),
-    password=$("#password").val(),
-    email=$("#email").val()
-};
-return obj;
-}
+    var ime=$("#tbIme").val();
+    var prezime=$("#tbPrezime").val();
+    var username=$("#username").val();
+    var password=$("#password").val();
+    var email=$("#email").val(); 
+
     var reIme=/^[A-ZĐŠŽĆČ][a-zđšžćč]{2,14}(\s[A-ZĐŠŽĆČ][a-zđšžćč]{2,14})?$/;
     var rePrezime=/^[A-ZĐŠŽĆČ][a-zđšžćč]{2,14}(\s[A-ZĐŠŽĆČ][a-zđšžćč]{2,14})?$/;
     var reUsername=/^[A-z0-9]+$/;
@@ -33,11 +29,11 @@ return obj;
         document.querySelector("#tbPrezime").style.border="1px solid red";
     }
     if(reEmail.test(email)){
-        podaci.push(ime);
+        podaci.push(email);
     }
     else {
         greske.push(email);
-        document.querySelector("#email").style.border="1px solid red";
+        document.querySelector("#email").style.border="2px solid red";
     }
     if(rePassword.test(password)){
         podaci.push(password);
@@ -58,18 +54,20 @@ return obj;
         console.log(greske);
     }
     else {
-        function callAjax(obj){
         $.ajax({
-            url: "models/obradaRegistacija.php",
-            type: "post",
-            data: obj,
+            url: "http://localhost/phpProject/models/obradaRegistracija.php",
+            method: "post",
+            data: {
+                ime:ime,
+                prezime:prezime,
+                username:username,
+                password:password
+            },
             success: function (data, xhr) {
                 //window.location = "index.php?page=prijava";
                 document.querySelector("#dodatnoPoljeReg").innerHTML="Uspešno ste se registrovali.";
-                console.log("poruka");
             },
             error: function (xhr,status,error) {
-                var poruka="Doslo je greske";
                 switch(xhr.status){
                     case 404:
                         poruka="Stranica nije pronadjena";
@@ -84,11 +82,7 @@ return obj;
                         poruka="Greska";
                         break;
                 }
-                document.querySelector("#dodatnoPoljeReg").htmla(poruka);
+                document.querySelector("#dodatnoPoljeReg").innerHTML="Doslo je greske.";
             }
         });
-}
-        var formData=getFormData();
-        callAjax(formData);
-
     }})

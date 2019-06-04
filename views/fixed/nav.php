@@ -11,9 +11,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Панталоне</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Aксесоари</a>
-                    </li>
                     <?php
                         $menuItems=getMenuItems();
                         foreach($menuItems as $item):
