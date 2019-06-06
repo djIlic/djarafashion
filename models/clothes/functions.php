@@ -9,6 +9,9 @@ function getMenuItems(){
     return executeQuery("SELECT * FROM menu WHERE status=1 ORDER BY redosled");
 }
 
+function getCategories(){
+    return executeQuery("SELECT * FROM kategorija");
+}
 // function zabeleziPristup(){
 //     $file = fopen(BASE_URL . "data/log.txt", "a");
 

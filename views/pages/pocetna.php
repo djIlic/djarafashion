@@ -1,4 +1,4 @@
-<div class="col-md-9">
+<div class="col-md-9" id="main">
             <div id="carouselExampleSlidesOnly" class="carousel slide slajder" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
