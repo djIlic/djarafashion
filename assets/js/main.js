@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    //prikaz proizvoda
     $(document).on("click", ".proizvodi", function(e){
         e.preventDefault();
 
@@ -45,7 +46,9 @@ $(document).ready(function(){
                     </div>
                 `;
     }
+    //end prikaz proizvoda
 
+    //obrada registracije
     $("#btnReg").click(function(){
         var ime=$("#tbIme").val();
         var prezime=$("#tbPrezime").val();
@@ -115,9 +118,8 @@ $(document).ready(function(){
                     send:true
                 },
                 success: function (data, xhr) {
-                    //window.location = "index.php?page=prijava";
-                    document.querySelector("#dodatnoPoljeReg").innerHTML="Uspešno ste se registrovali.";
-                    //window.location = "index.php?page=";
+                    document.querySelector("#dodatnoPoljeReg").innerHTML="Успешно сте се регистровали";
+                    window.location = "index.php?page=prijava";
                 },
                 error: function (xhr,status,error) {
                     var poruka="Doslo je do greske";
@@ -139,4 +141,63 @@ $(document).ready(function(){
                 }
             });
         }})
+    //endobrada registracije
+
+    //obrada logovanja
+        $("#btnLog").click(function(){
+            
+        var email = $("#emailLog").val();
+        var password = $("#passwordLog").val();
+        
+        var errors = new Array();
+
+        var reEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        var rePassword = /^[A-z0-9]{8,}$/;
+
+        if (!reEmail.test(email)) {
+            errors.push("Ne postoji korisnik sa ovom e-mail adresom");
+            document.querySelector("#emailLog").style.border="1px solid red";
+        }
+        if (!rePassword.test(password)) {
+            errors.push("Ne postoji korisnik sa ovom e-mail adresom");
+            document.querySelector("#passwordLog").style.border="1px solid red";
+        }
+        if (errors.length != 0) {
+            document.querySelector("#dodatnoPolje").innerHTML="Не постоји корисник са овим параметрима";
+        } 
+        else { 
+            $.ajax({
+                url: "http://localhost/phpProject/models/obradaLogovanje.php",
+                method: "post",
+                data: {
+                    email: email,
+                    password: password,
+                    send: true
+                },
+                success: function (podaci) {
+                    //  console.log("Poslato");
+                    // console.log(podaci);
+                    window.location = "index.php";
+                },
+                error: function (xhr,status,error) {
+                    var poruka="Doslo je do greske";
+                    switch(xhr.status){
+                        case 404:
+                            poruka="Stranica nije pronadjena";
+                            break;
+                        case 409:
+                            poruka="Parametri vec postoje";
+                            break;
+                        case 422:
+                            poruka="Podaci nisu validni";
+                            break;
+                        case 500:
+                            poruka="Greska";
+                            break;
+                    }
+                    $("#dodatnoPolje").html(poruka);    
+                }
+            });
+         }})
+    //end obrada logovanja
     });
