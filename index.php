@@ -21,11 +21,11 @@ if(isset($_GET['page'])){
         include "views/pages/kontakt.php";
         break;
         case 'proizvod':
-        // if(isset($_GET['id'])){
+        if(isset($_GET['id'])){
           include "views/pages/proizvod.php";
-        // } else {
-        //   include "views/pages/404.php";
-        // }
+        } else {
+          include "views/pages/404.php";
+        }
         break;
         default:
         include "views/pages/404.php";

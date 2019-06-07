@@ -1,4 +1,5 @@
-<div class="col-md-9 form" id="main">
+<div class="col-md-9 form">
+    <div class="row" id="main">
     <div class="col-md-7 mt-5">
         <h3>Пријави се</h3>
             <form method="POST">
@@ -15,6 +16,7 @@
                     <input type="button" class="btn btn-secondary" id="btnLog" name="btnLog" value="Пријави се"/>
                 </div>
             </form>
+    </div>
     </div>
 </div>
 </main>

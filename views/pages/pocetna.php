@@ -1,4 +1,5 @@
-<div class="col-md-9" id="main">
+<div class="col-md-9">
+    <div class="row" id="main">
             <div id="carouselExampleSlidesOnly" class="carousel slide slajder" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -13,5 +14,6 @@
                 </div>
                 </div>
             </div>
+        </div>
         </div>
     </main>

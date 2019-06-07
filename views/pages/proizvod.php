@@ -1,4 +1,5 @@
-<div class="col-md-9" id="main">
+<div class="col-md-9">
+    <div class="row" id="main">
     <div class="row">
         <div class="col">
             <img src="assets/images/s1.jpg" alt="" style="width:500px">
@@ -88,5 +89,6 @@
         </div>
         <?php endforeach;?>
         </div> -->
+    </div>
     </div>
 </main>
