@@ -20,6 +20,9 @@ if(isset($_GET['page'])){
         case 'kontakt':
         include "views/pages/kontakt.php";
         break;
+        case 'admin':
+        include "views/pages/admin.php";
+        break;
         case 'proizvod':
         if(isset($_GET['id'])){
           include "views/pages/proizvod.php";

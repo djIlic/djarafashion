@@ -9,7 +9,7 @@ define("PASSWORD", env("PASSWORD"));
 
 
 function env($parametar){
-    $file = file(BASE_URL . "config/.env");
+    $file = file(BASE_URL."config/.env");
 
     $vrednost = "";
 

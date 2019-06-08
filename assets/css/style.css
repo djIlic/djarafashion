@@ -55,3 +55,6 @@ a, .body{
     border-color: #222!important;
     border-radius: 0px!important;
 }
+#slika, #modelOpis{
+    margin-top: 25px;
+}
