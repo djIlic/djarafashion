@@ -1,38 +1,29 @@
 <div class="col-md-9">
+<?php include "views/partials/divSort.php"; ?>
+    <?php
+    $id=$_GET["id"];
+    $items=getProductsWithPhoto($id);
+
+    foreach($items as $item):
+    ?>
     <div class="row" id="main">
     <div class="row">
         <div class="col">
-            <img src="assets/images/s1.jpg" alt="" style="width:500px">
+            <img src="<?= $item->velikaSlika?>" alt="<?= $item->naziv?>" style="width:500px;">
         </div>
         <div class="col">
             <div class="col">
-                <h1>Naziv</h1>
+                <h1><?= $item->naziv?></h1>
+            </div>
+            <div class="col text-justify">
+                <p><?= $item->opis?></p>
             </div>
             <div class="col">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            </div>
-            <div class="col">
-                <h2>Dostupne velicine</h2>
-                <hr/>
-                    <table class="text-left">
-                        <tr>
-                            <th> M </th>
-                        </tr>
-                        <tr>
-                            <th> L </th>
-                        </tr>
-                        <tr>
-                            <th> XL </th>
-                        </tr>
-                    </table>
-                <hr/>
-            </div>
-            <div class="col">
-                <h3>Cena</h3>
+                <h3><?= $item->cena?> РСД</h3>
             </div>
         </div>
     </div>
-    <div class="row">
+    <?php endforeach;?>
     <h3> Komentari </h3>
     <hr/>
     <div class="container">
@@ -89,6 +80,5 @@
         </div>
         <?php endforeach;?>
         </div> -->
-    </div>
     </div>
 </main>

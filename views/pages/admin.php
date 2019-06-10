@@ -1,4 +1,5 @@
 <div class="col-md-9 form">
+<?php include "views/partials/divSort.php"; ?>
     <div class="row mt-0" id="main">
         <div class="col">
         <h4>Додај производ</h4>
@@ -9,7 +10,7 @@
         </div>
         <div class="form-row mt-4">
             <label> Цена </label>
-            <input type="text" class="form-control" id="modelNaziv" name="modelNaziv">
+            <input type="text" class="form-control" id="cena" name="cena">
         </div>
         <div class="form-row mt-4">
             <label> Категорија </label>
@@ -38,6 +39,12 @@
                     <label> Артикл </label>
                     <select class="form-control" id="ddlArtikl" name="ddlArtikl">
                                 <option selected>Изабери...</option>
+                                <?php
+                                $artikli=getProducts();
+                                foreach($artikli as $artikl):
+                                ?>
+                                <option value="<?=$artikl->artiklId?>"><?=$artikl->naziv?></option>
+                                <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="form-row">

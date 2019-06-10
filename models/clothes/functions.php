@@ -13,27 +13,18 @@ function getCategories(){
     return executeQuery("SELECT * FROM kategorija");
 }
 
-// function getProductsWithPhoto(){
-//     return executeQuery("SELECT * FROM artikl a INNER JOIN slika s ON a.artiklId=s.artiklId");
-// }
+function getProducts(){
+    return executeQuery("SELECT * FROM artikl");
+}
 
-// function getProductsWithSize($id){
-//     // global $conn;
-//     // try{
-//     return exwcuteQury("SELECT va.naziv FROM artikl a INNER JOIN velicinaartikl va ON a.artiklId=va.artiklId WHERE artiklId=$id");
-//     // $select = $conn->prepare("SELECT * FROM actors a INNER JOIN movie_actors ma ON a.id = ma.actor_id WHERE ma.movie_id = ?");
-//     //     $select->execute([$movie_id]);
-
-//     //     return $select->fetchAll();
-//     // }
-//     // catch(PDOException $e){
-//     //     return null;
-//     // }
-// }
+function getProductsWithPhoto($id){
+    return executeQuery("SELECT * FROM artikl a INNER JOIN slika s ON a.artiklId=s.artiklId WHERE a.artiklId=$id");
+}
 
 // function getProductsWithComment($id){
 //     return exwcuteQury("SELECT komentar, datum, korisnikId FROM komentar k INNER JOIN artikl a ON k.artiklId=a.artiklId WHERE a.artiklId=$id");
 // }
+
 // function zabeleziPristup(){
 //     $file = fopen(BASE_URL . "data/log.txt", "a");
 
@@ -44,7 +35,7 @@ function getCategories(){
 // }
 
 function getAll(){
-    return executeQuery("SELECT * FROM slike");
+    return executeQuery("SELECT * FROM slika");
 }
 
 function getOne($id){
@@ -54,9 +45,9 @@ function getOne($id){
     return $result->fetch();
 }
 
-function insert($putanjaOriginalnaSlika, $putanjaNovaSlika){
+function insert($putanjaOriginalnaSlika, $putanjaNovaSlika, $artiklId){
     global $conn;
-    $insert = $conn->prepare("INSERT INTO slika VALUES('', ?, ?)");
-    $isInserted = $insert->execute([$putanjaOriginalnaSlika, $putanjaNovaSlika]);
+    $insert = $conn->prepare("INSERT INTO slika VALUES('', ?, ?, ?)");
+    $isInserted = $insert->execute([$putanjaOriginalnaSlika, $putanjaNovaSlika, $artiklId]);
     return $isInserted;
 }

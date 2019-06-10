@@ -58,3 +58,7 @@ a, .body{
 #slika, #modelOpis{
     margin-top: 25px;
 }
+.zoom:hover{
+    transition: 0.5s;
+    transform: scale(1.05);
+}

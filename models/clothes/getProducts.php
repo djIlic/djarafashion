@@ -4,6 +4,7 @@ header("Content-type: application/json");
 
 if(isset($_POST['id'])){
     require "../../config/connection.php";
+    
     $id = $_POST['id'];
     $upit = "SELECT * FROM kategorija k INNER JOIN artikl a 
                                         ON k.kategorijaId=a.kategorijaId INNER JOIN slika s 

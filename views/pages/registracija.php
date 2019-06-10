@@ -1,4 +1,5 @@
 <div class="col-md-9 form">
+<?php include "views/partials/divSort.php"; ?>
     <div class="row" id="main">
     <div class="col-md-7 mt-5">
     <h3>Региструј се</h3>

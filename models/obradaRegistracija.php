@@ -33,7 +33,7 @@ if(isset($_POST["send"])){
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
         array_push($errors, "Е-пошта није није унета у добром формату");
     }
-var_dump($errors);
+//var_dump($errors);
     if(count($errors)==0){
         $upit="INSERT INTO korisnik VALUES (NULL, :ime, :prezime, :username, :pass, :email, 2)";
         $rez=$conn->prepare($upit);

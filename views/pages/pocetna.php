@@ -1,4 +1,5 @@
 <div class="col-md-9">
+<?php include "views/partials/divSort.php"; ?>
     <div class="row" id="main">
             <div id="carouselExampleSlidesOnly" class="carousel slide slajder" data-ride="carousel">
                 <div class="carousel-inner">

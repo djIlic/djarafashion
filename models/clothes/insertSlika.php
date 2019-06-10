@@ -5,6 +5,8 @@ if(isset($_POST['btnSlika'])){
     require_once "../../config/connection.php";
     require_once "functions.php";
 
+    $artiklId=$_POST['ddlArtikl'];
+
     // FAJL
 
     // $fajl = $_FILES['slika'];
@@ -23,10 +25,10 @@ if(isset($_POST['btnSlika'])){
     $dozvoljeni_tipovi = ['image/jpg', 'image/jpeg', 'image/png'];
 
     if(!in_array($fajl_tip, $dozvoljeni_tipovi)){
-        array_push($greske, "Pogresan tip fajla. - Profil slika");
+        array_push($greske, "Pogresan tip fajla.");
     }
     if($fajl_velicina > 3000000){
-        array_push($greske, "Maksimalna velicina fajla je 3MB. - Profil slika");
+        array_push($greske, "Maksimalna velicina fajla je 3MB.");
     }
 
     
@@ -65,7 +67,7 @@ if(isset($_POST['btnSlika'])){
         // $novaVisina = $visina * 0.5;
         
         // PRIMER 3 - srazmerno smanjenje - sirina: 200px, visina: ?
-        $novaSirina = 200;
+        $novaSirina = 245;
         $novaVisina = ($novaSirina/$sirina) * $visina; // novaVisina : visina = novaSirina : sirina
 
         // kreiranje prazne slike
@@ -76,8 +78,6 @@ if(isset($_POST['btnSlika'])){
         // po referenci: u $novaSlika ce se nalaziti smanjena upload-ovana slika
         imagecopyresampled($novaSlika, $postojecaSlika, 0, 0, 0, 0, $novaSirina, $novaVisina, $sirina, $visina);
 
-        // PROMENA IZGLEDA NOVE SLIKE - FILTER
-        imagefilter($novaSlika, IMG_FILTER_GRAYSCALE);
 
         // UPLOAD NOVE SLIKE
         $naziv = time().$fajl_naziv;
@@ -85,7 +85,7 @@ if(isset($_POST['btnSlika'])){
 
         switch($fajl_tip){
             case 'image/jpeg':
-                imagejpeg($novaSlika, '../../'.$putanjaNovaSlika, 75);
+                imagejpeg($novaSlika, '../../'.$putanjaNovaSlika);
                 break;
             case 'image/png':
                 imagepng($novaSlika, '../../'.$putanjaNovaSlika);
@@ -98,7 +98,7 @@ if(isset($_POST['btnSlika'])){
             echo "Slika je upload-ovana na server!";
 
             try {
-                $isInserted = insert($putanjaOriginalnaSlika, $putanjaNovaSlika);
+                $isInserted = insert($putanjaOriginalnaSlika, $putanjaNovaSlika, $artiklId);
 
                 if($isInserted){
                     echo "Putanja do slike je upisana u bazu!";

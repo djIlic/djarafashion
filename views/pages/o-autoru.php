@@ -1,4 +1,5 @@
 <div class="col-md-9">
+    <?php include "views/partials/divSort.php"; ?>
     <div class="row" id="main">
         <div class="col-sm-6 p-0 ml-3" id="authorPhoto">
             <img src="assets/images/autor.png" alt="Djordje Ilic" title="Djordje Ilic" class="img-fluid">
