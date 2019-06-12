@@ -17,6 +17,9 @@ if(isset($_GET['page'])){
         case 'registracija':
         include "views/pages/registracija.php";
         break;
+        case 'adminProizvodi':
+        include "views/pages/adminProizvodi.php";
+        break;
         case 'kontakt':
         include "views/pages/kontakt.php";
         break;

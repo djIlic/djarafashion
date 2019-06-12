@@ -38,6 +38,9 @@
                         <a class="nav-link" href="index.php?page=admin">Додај производ</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="index.php?page=adminProizvodi">Производи</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#">Корисници</a>
                     </li>
                     <?php endif;?>

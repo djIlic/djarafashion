@@ -17,6 +17,10 @@ function getProducts(){
     return executeQuery("SELECT * FROM artikl");
 }
 
+function getProductsWithCategory(){
+    return executeQuery("SELECT a.artiklId, a.naziv AS artiklNaziv, k.naziv AS kategorijaNaziv FROM artikl a INNER JOIN kategorija k ON a.kategorijaId=k.kategorijaId");
+}
+
 function getProductsWithPhoto(){
     return executeQuery("SELECT * FROM artikl a INNER JOIN slika s ON a.artiklId=s.artiklId WHERE a.artiklId=:id");
 }
