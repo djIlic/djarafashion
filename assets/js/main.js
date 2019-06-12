@@ -6,7 +6,7 @@ $(document).ready(function(){
         var id=$(this).data("id");
         //console.log(id);
         $.ajax({
-            url:"http://localhost/phpProject/models/clothes/getProducts.php",
+            url:"http://localhost/phpProject/models/clothes/getProducts.php", //prikazuje selektovano po kategoriji
             method: "POST",
             data: {
                 id:id
@@ -52,16 +52,38 @@ $(document).ready(function(){
         return `
                     <div class="col">
                         <div class="col">
-                            <a href="#" title="${ proizvod.naziv }"><img src="${ proizvod.malaSlika }" alt="${ proizvod.naziv }" class="zoom"></a>
+                            <a href="index.php?page=proizvod&id=${ proizvod.artiklId}" title="${ proizvod.naziv }"><img src="${ proizvod.malaSlika }" alt="${ proizvod.naziv }" class="zoom"></a>
                             </div>
                             <div class="col">
-                            <a href="#" title="${ proizvod.naziv }"><p class="mb-0"> <b>${ proizvod.naziv }</b></p></a> <br/>
+                            <a href="index.php?page=proizvod&id=${ proizvod.artiklId}" title="${ proizvod.naziv }"><p class="mb-0"> <b>${ proizvod.naziv }</b></p></a> <br/>
                             <p> ${ proizvod.cena } РСД </p>
                         </div>
                     </div>
                 `;
     }
     //end prikaz proizvoda
+
+    //filter
+    // $("#search").keyup(function(){
+    //     let naziv = $(this).val();
+
+    //     $.ajax({
+    //         url: "models/products/filtriranje.php",
+    //         method: "POST",
+    //         data: {
+    //             naziv: naziv
+    //         },
+    //         dataType: 'json',
+    //         success: function(podaci){
+    //             console.log(podaci);
+    //             prikaziProizvode(podaci);
+    //         },
+    //         error: function(greska){
+    //             console.log(greska);
+    //         }
+    //     })
+    // });
+    //endfilter
 
     //obrada registracije
     $("#btnReg").click(function(){

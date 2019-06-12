@@ -17,13 +17,28 @@ function getProducts(){
     return executeQuery("SELECT * FROM artikl");
 }
 
-function getProductsWithPhoto($id){
-    return executeQuery("SELECT * FROM artikl a INNER JOIN slika s ON a.artiklId=s.artiklId WHERE a.artiklId=$id");
+function getProductsWithPhoto(){
+    return executeQuery("SELECT * FROM artikl a INNER JOIN slika s ON a.artiklId=s.artiklId WHERE a.artiklId=:id");
 }
 
-// function getProductsWithComment($id){
-//     return exwcuteQury("SELECT komentar, datum, korisnikId FROM komentar k INNER JOIN artikl a ON k.artiklId=a.artiklId WHERE a.artiklId=$id");
+function getProductsWithComment($id){
+    global $conn;
+
+    try{
+        $comm=$conn->prepare("SELECT * FROM komentar");
+    }
+    catch(PDOException $e){
+
+    }
+    //     return exwcuteQury("SELECT komentar, datum, korisnikId FROM komentar k INNER JOIN artikl a ON k.artiklId=a.artiklId WHERE a.artiklId=$id");
+    }
+// function dohvati($id){
+//     return executeQuery("SELECT * FROM kategorija k INNER JOIN artikl a 
+//     ON k.kategorijaId=a.kategorijaId INNER JOIN slika s 
+//     ON a.artiklId=s.artiklId
+//     WHERE k.kategorijaId = :id");
 // }
+// 
 
 // function zabeleziPristup(){
 //     $file = fopen(BASE_URL . "data/log.txt", "a");

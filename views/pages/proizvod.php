@@ -1,8 +1,8 @@
 <div class="col-md-9">
 <?php include "views/partials/divSort.php"; ?>
     <?php
-    $id=$_GET["id"];
-    $items=getProductsWithPhoto($id);
+    //$id=$_GET["id"];
+    
 
     foreach($items as $item):
     ?>
