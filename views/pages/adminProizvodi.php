@@ -31,8 +31,9 @@ else {
       <th scope="row"><?=$artikl->artiklId?></th>
       <td><?=$artikl->artiklNaziv?></td>
       <td><?=$artikl->kategorijaNaziv?></td>
-      <td><a href="php/update.php?id=10"  title="Уреди производ"><i class="fa fa-edit" style="font-size:24px"></i></a>
-        <a href="php/delete.php?id=5" title="Избриши производ"><i class="fa fa-trash-o" style="font-size:24px" name="delete" id="delete"></i></a>
+      <td>
+        <a href="#" data-id="<?=$artikl->artiklId?>" title="Уреди производ"><i class="fa fa-edit" style="font-size:24px" name="update" id="update"></i></a>
+        <a href="#" data-id="<?=$artikl->artiklId?>" title="Избриши производ"><i class="fa fa-trash-o" style="font-size:24px" name="delete" id="delete"></i></a>
       </td>
     </tr>
     <?php endforeach;?>

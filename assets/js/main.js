@@ -237,4 +237,68 @@ $(document).ready(function(){
             });
          }})
     //end obrada logovanja
+ 
+    //prikaz proizoda na admin stranici
+    $(document).on("click", ".proizvodi", function(e){
+        e.preventDefault();
+
+        var id=$(this).data("id");
+        //console.log(id);
+        $.ajax({
+            url:"http://localhost/phpProject/models/clothes/getProducts.php", //prikazuje selektovano po kategoriji
+            method: "POST",
+            data: {
+                id:id
+            },
+            success:function(proizvodi){
+                prikaziProizvode(proizvodi);
+                prikaziListu();
+            },
+            error:function(xhr, greska, status){
+                alert(greska);
+            }
+        })
+    });
+
+    function prikaziListu(){
+        ispis=`
+        <select class="form-control" id="ddlSort" name="ddlSort">
+                                 <option selected>Сортирај по...</option>
+                                 <option>Називу од А до Ш</option>
+                                 <option>Називу од Ш до А</option>
+                                 <option>Цени растућа</option>
+                                 <option>Цени опадајућа</option>
+         </select>
+        `;
+        $("#sort").html(ispis);
+    } 
+
+    function prikaziProizvode(proizvodi){
+
+        var ispis = "";
+        if(proizvodi.length>0){
+            for(let proizvod of proizvodi){
+                ispis += prikaziProizvod(proizvod);
+            }
+        } else {
+            ispis = noProducts();
+        }
+        console.log(ispis)
+        $("#main").html(ispis);
+    }
+
+    function prikaziProizvod(proizvod){
+        return `
+                    <div class="col">
+                        <div class="col">
+                            <a href="index.php?page=proizvod&id=${ proizvod.artiklId}" title="${ proizvod.naziv }"><img src="${ proizvod.malaSlika }" alt="${ proizvod.naziv }" class="zoom"></a>
+                            </div>
+                            <div class="col">
+                            <a href="index.php?page=proizvod&id=${ proizvod.artiklId}" title="${ proizvod.naziv }"><p class="mb-0"> <b>${ proizvod.naziv }</b></p></a> <br/>
+                            <p> ${ proizvod.cena } РСД </p>
+                        </div>
+                    </div>
+                `;
+    }
+    //prikaz proizvoda na admin stranici
     });
