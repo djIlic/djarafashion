@@ -35,7 +35,7 @@
                     if(isset($_SESSION['korisnik'])):
                     if($_SESSION['korisnik']->ulogaId==1):?>
                     <li class="nav-item border-top">
-                        <a class="nav-link" href="#">Додај производ</a>
+                        <a class="nav-link" href="index.php?page=admin">Додај производ</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Корисници</a>

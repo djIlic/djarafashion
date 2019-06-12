@@ -54,7 +54,7 @@ function getOneProduct($id){
         $dohvatiProizvod->execute([$id]);
 
         $proizvod=$dohvatiProizvod->fetch();
-        $proizovod->komentar=getProductsWithComment($proizvod->artiklId);
+        $proizvod->komentar=getProductsWithComment($proizvod->artiklId);
     }
     catch(PDOException $e){
         return null;
