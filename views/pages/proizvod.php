@@ -1,10 +1,9 @@
 <div class="col-md-9">
 <?php include "views/partials/divSort.php"; ?>
     <?php
-    //$id=$_GET["id"];
-    
+    $item=getOneProduct($_GET["id"]);
 
-    foreach($items as $item):
+    if($item):
     ?>
     <div class="row" id="main">
     <div class="row">
@@ -23,7 +22,7 @@
             </div>
         </div>
     </div>
-    <?php endforeach;?>
+    <?php endif;?>
     <h3> Komentari </h3>
     <hr/>
     <div class="container">

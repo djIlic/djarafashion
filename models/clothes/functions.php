@@ -25,13 +25,41 @@ function getProductsWithComment($id){
     global $conn;
 
     try{
-        $comm=$conn->prepare("SELECT * FROM komentar");
+        $comm=$conn->prepare("SELECT * FROM komentar k INNER JOIN artikl a ON k.artiklId=a.artiklId INNER JOIN korisnik ko ON k.korisnikId=ko.korisnikId WHERE k.artiklId=?");
+        $comm->execute([$id]);
+
+        return $comm->fetchAll();
     }
     catch(PDOException $e){
+        return null;
+    }
+    }
 
+function getAllofProfuct(){
+    $products=getProductsWithPhoto();
+
+    foreach($products as $product){
+        $comment=getProductsWithComment($product->artiklId);
+        $product->komentar=$comment;
     }
-    //     return exwcuteQury("SELECT komentar, datum, korisnikId FROM komentar k INNER JOIN artikl a ON k.artiklId=a.artiklId WHERE a.artiklId=$id");
+
+    return $product;
+}
+
+function getOneProduct($id){
+    global $conn;
+
+    try{
+        $dohvatiProizvod= $conn->prepare("SELECT * FROM artikl a INNER JOIN slika s ON a.artiklId=s.artiklId WHERE a.artiklId=?");
+        $dohvatiProizvod->execute([$id]);
+
+        $proizvod=$dohvatiProizvod->fetch();
+        $proizovod->komentar=getProductsWithComment($proizvod->artiklId);
     }
+    catch(PDOException $e){
+        return null;
+    }
+}
 // function dohvati($id){
 //     return executeQuery("SELECT * FROM kategorija k INNER JOIN artikl a 
 //     ON k.kategorijaId=a.kategorijaId INNER JOIN slika s 
