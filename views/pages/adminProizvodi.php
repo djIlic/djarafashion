@@ -32,8 +32,8 @@ else {
       <td><?=$artikl->artiklNaziv?></td>
       <td><?=$artikl->kategorijaNaziv?></td>
       <td>
-        <a href="#" data-id="<?=$artikl->artiklId?>" title="Уреди производ"><i class="fa fa-edit" style="font-size:24px" name="update" id="update"></i></a>
-        <a href="#" data-id="<?=$artikl->artiklId?>" title="Избриши производ"><i class="fa fa-trash-o" style="font-size:24px" name="delete" id="delete"></i></a>
+        <a href="#" name="update" class="update" data-id="<?=$artikl->artiklId?>" title="Уреди производ"><i class="fa fa-edit" style="font-size:24px"></i></a>
+        <a href="#" class="delete" name="delete" data-id="<?=$artikl->artiklId?>" title="Избриши производ"><i class="fa fa-trash-o" style="font-size:24px" ></i></a>
       </td>
     </tr>
     <?php endforeach;?>
@@ -41,4 +41,4 @@ else {
 </table>
     </div>
     </div>
-    </main>
+    </main> 

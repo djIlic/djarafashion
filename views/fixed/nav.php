@@ -41,7 +41,7 @@
                         <a class="nav-link" href="index.php?page=adminProizvodi">Производи</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Корисници</a>
+                        <a class="nav-link" href="index.php?page=adminKorisnici">Корисници</a>
                     </li>
                     <?php endif;?>
                     <?php endif;?>

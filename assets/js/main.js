@@ -13,26 +13,12 @@ $(document).ready(function(){
             },
             success:function(proizvodi){
                 prikaziProizvode(proizvodi);
-                prikaziListu();
             },
             error:function(xhr, greska, status){
                 alert(greska);
             }
         })
     });
-
-    function prikaziListu(){
-        ispis=`
-        <select class="form-control" id="ddlSort" name="ddlSort">
-                                 <option selected>Сортирај по...</option>
-                                 <option>Називу од А до Ш</option>
-                                 <option>Називу од Ш до А</option>
-                                 <option>Цени растућа</option>
-                                 <option>Цени опадајућа</option>
-         </select>
-        `;
-        $("#sort").html(ispis);
-    } 
 
     function prikaziProizvode(proizvodi){
 
@@ -44,13 +30,15 @@ $(document).ready(function(){
         } else {
             ispis = noProducts();
         }
-        console.log(ispis)
+        //console.log(ispis)
         $("#main").html(ispis);
     }
 
     function prikaziProizvod(proizvod){
         return `
+        <input type="hidden" value="${proizvod.kategorijaId}" id="kanada"/>
                     <div class="col">
+                    <input type="hidden" value="${ proizvod.kategorijaId}" id="skriveno"/>
                         <div class="col">
                             <a href="index.php?page=proizvod&id=${ proizvod.artiklId}" title="${ proizvod.naziv }"><img src="${ proizvod.malaSlika }" alt="${ proizvod.naziv }" class="zoom"></a>
                             </div>
@@ -63,17 +51,16 @@ $(document).ready(function(){
     }
     //end prikaz proizvoda
 
-    //filter
+    //претрага
     // $("#search").keyup(function(){
     //     let naziv = $(this).val();
-
+    //     //console.log(naziv);
     //     $.ajax({
-    //         url: "models/products/filtriranje.php",
+    //         url: "models/clothes/filter.php",
     //         method: "POST",
     //         data: {
     //             naziv: naziv
     //         },
-    //         dataType: 'json',
     //         success: function(podaci){
     //             console.log(podaci);
     //             prikaziProizvode(podaci);
@@ -83,7 +70,7 @@ $(document).ready(function(){
     //         }
     //     })
     // });
-    //endfilter
+    //претрага
 
     //obrada registracije
     $("#btnReg").click(function(){
@@ -238,67 +225,47 @@ $(document).ready(function(){
          }})
     //end obrada logovanja
  
-    //prikaz proizoda na admin stranici
-    $(document).on("click", ".proizvodi", function(e){
-        e.preventDefault();
-
+    //brisanje proizoda na admin stranici
+    $(document).on("click", ".delete", function(){
+        
         var id=$(this).data("id");
-        //console.log(id);
+        
         $.ajax({
-            url:"http://localhost/phpProject/models/clothes/getProducts.php", //prikazuje selektovano po kategoriji
+            url:"http://localhost/phpProject/models/deleteProduct.php",
             method: "POST",
             data: {
-                id:id
+                id:id,
+                send:true
             },
-            success:function(proizvodi){
-                prikaziProizvode(proizvodi);
-                prikaziListu();
+            success:function(data){
+                window.location = "index.php?page=adminProizvodi";
             },
             error:function(xhr, greska, status){
                 alert(greska);
             }
         })
     });
+    //end brisanje proizvoda na admin stranici
 
-    function prikaziListu(){
-        ispis=`
-        <select class="form-control" id="ddlSort" name="ddlSort">
-                                 <option selected>Сортирај по...</option>
-                                 <option>Називу од А до Ш</option>
-                                 <option>Називу од Ш до А</option>
-                                 <option>Цени растућа</option>
-                                 <option>Цени опадајућа</option>
-         </select>
-        `;
-        $("#sort").html(ispis);
-    } 
-
-    function prikaziProizvode(proizvodi){
-
-        var ispis = "";
-        if(proizvodi.length>0){
-            for(let proizvod of proizvodi){
-                ispis += prikaziProizvod(proizvod);
-            }
-        } else {
-            ispis = noProducts();
-        }
-        console.log(ispis)
-        $("#main").html(ispis);
-    }
-
-    function prikaziProizvod(proizvod){
-        return `
-                    <div class="col">
-                        <div class="col">
-                            <a href="index.php?page=proizvod&id=${ proizvod.artiklId}" title="${ proizvod.naziv }"><img src="${ proizvod.malaSlika }" alt="${ proizvod.naziv }" class="zoom"></a>
-                            </div>
-                            <div class="col">
-                            <a href="index.php?page=proizvod&id=${ proizvod.artiklId}" title="${ proizvod.naziv }"><p class="mb-0"> <b>${ proizvod.naziv }</b></p></a> <br/>
-                            <p> ${ proizvod.cena } РСД </p>
-                        </div>
-                    </div>
-                `;
-    }
-    //prikaz proizvoda na admin stranici
+        //brisanje korisnika na admin stranici
+        $(document).on("click", ".deleteKor", function(){
+        
+            var id=$(this).data("id");
+            
+            $.ajax({
+                url:"http://localhost/phpProject/models/deleteUsers.php",
+                method: "POST",
+                data: {
+                    id:id,
+                    send:true
+                },
+                success:function(data){
+                    window.location = "index.php?page=adminKorisnici";
+                },
+                error:function(xhr, greska, status){
+                    alert(greska);
+                }
+            })
+        });
+        //end brisanje korisnika na admin stranici
     });

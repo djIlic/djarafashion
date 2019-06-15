@@ -51,9 +51,9 @@
             </div>
             <div class="col-md-9">
                 <div class="form-group">
-                <form method="post" action="php/komentar.php">
+                <form method="post" action="models/komentar.php">
                     <div class="form-row">
-                        <input type="hidden" name="model" value=""/>
+                        <input type="hidden" name="model" value="<?=$id?>"/>
                         <textarea class="form-control" id="komentar" name="komentar" rows="3" placeholder="Ваш коментар..."></textarea>
                     </div>
                     <div class="form-row">

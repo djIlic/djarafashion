@@ -9,6 +9,7 @@
             <h4>Контакт:</h3>
             <p> E-пошта:<a href="mailto:dorde.ilic97@gmail.com"> dorde.ilic97@gmail.com </a></p>
             <p> E-пошта:<a href="mailto:djordje.ilic.112.16@ict.edu.rs"> djordje.ilic.112.16@ict.edu.rs </a></p>
+            <p><a href="models/autorWord.php" class="btn btn-secondary">Преузми податке о аутору</a></p>
         </div>
     </div>
 </div>       

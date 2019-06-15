@@ -1,16 +1,14 @@
 <?php 
+//header("Content-type: application/json");
 
-if(isset($_POST['search'])){
+if(isset($_POST['naziv'])){
     include "../../config/connection.php";
     include "functions.php";
 
     $naziv = "%".strtoupper($_POST['naziv'])."%";
-    $upit = getQuery();
+    $upit = getProducts();
 
-    $upit .= " WHERE LOWER(p.name) LIKE :naziv";
-
-    // '%"PERA"%'
-    // "%PERA%"
+    $upit .= " WHERE naziv LIKE :naziv";
 
     $rezultat = $conn->prepare($upit);
     $rezultat->bindParam(":naziv", $naziv);
